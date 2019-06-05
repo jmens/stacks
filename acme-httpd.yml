@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  hebe-acme-httpd:
+    image: httpd
+    restart: always
+    container_name: hebe-acme-httpd
+    hostname: hebe-acme-httpd
+    volumes:
+      - /usr/local/lib/apache2:/usr/local/apache2/htdocs/
+    labels:
+        traefik.enable: "false"
+networks:
+  default:
+    external:
+      name: websites
+
