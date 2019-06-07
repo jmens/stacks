@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  fpvm-web:
+    image: registry.gitlab.com/jmens/fpvm-web-3
+    restart: always
+    labels:
+        traefik.enable: "true"
+        traefik.frontend.rule: "Host:www.fpvm.it,fpvm.it,fpvm.jmens.de"
+        traefik.docker.network: "traefik"
+        traefik.port: 10001
+    networks:
+        - default
+networks:
+  default:
+    external:
+      name: traefik
