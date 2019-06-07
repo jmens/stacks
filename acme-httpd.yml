@@ -10,6 +10,8 @@ services:
       - /usr/local/lib/apache2:/usr/local/apache2/htdocs/
     labels:
         traefik.enable: "false"
+    networks:
+        - default
 networks:
   default:
     external:
