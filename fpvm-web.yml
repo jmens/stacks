@@ -8,7 +8,7 @@ services:
         traefik.enable: "true"
         traefik.frontend.rule: "Host:www.fpvm.it,fpvm.it,fpvm.jmens.de"
         traefik.docker.network: "traefik"
-        traefik.port: 10001
+        traefik.port: "10001"
     networks:
         - default
 networks:
