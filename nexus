@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  nexus:
+    image: sonatype/nexus3
+    restart: always
+    volumes: 
+        - nexus-data:/nexus-data
+    labels:
+        traefik.enable: "true"
+        traefik.docker.network: "traefik"
+        traefik.maven.frontend.rule: "Host:maven.jmens.de"
+        traefik.maven.port: "8081"
+        traefik.docker.frontend.rule: "Host:docker.jmens.de"
+        traefik.docker.port: "10000"
+    networks:
+        - default
+networks:
+  default:
+    external:
+      name: traefik
+volumes:
+  nexus-data:
+    external: 
+      name: nexus-data
